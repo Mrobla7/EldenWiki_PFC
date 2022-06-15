@@ -1,0 +1,34 @@
+﻿@model ProyectoFinal_JuegoWiki.Models.Consumible
+
+@{
+    ViewData["Title"] = @Html.DisplayNameFor(model => model.Nombre);
+}
+
+<div class="contenidoprincipal">
+    <div style="width: 90%">
+        <h1 style="margin-top:20px; font-size: 60px; margin-right: 20px;">@Html.DisplayFor(model => model.Nombre)</h1>
+
+        <hr class="barraSeparadora" />
+    </div>
+
+    <div class="informacionTotal">
+        <div style="font-size: 20px; width: 60%;">
+            <p>@Html.DisplayFor(model => model.Descripcion)</p>
+            <a asp-action="Index">Volver a la lista</a>
+        </div>
+
+        <div class="tarjeta" style="width: 40%; margin-left: 20px;">
+
+            <div class="tarjeta-imagen" style="display:flex; flex-flow:column; align-items:center; justify-content:center;">
+                <h1>Consumible</h1>
+               @if (User.IsInRole("Administrador") || User.IsInRole("Usuario"))
+                {
+                    <a asp-action="Edit" asp-route-id="@Model.ConsumibleID">Editar</a>
+                }
+
+                <img src="@("~/img/Items/"+Model.Imagen)" asp-append-version="true"/>
+            </div>
+        
+        </div>
+    </div>
+</div>

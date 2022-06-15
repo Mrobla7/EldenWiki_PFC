@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Bienvenido";
+}
+<div class="contenidoprincipal">
+    <h1 style="text-align:center; margin-top:30px; margin-bottom: 80px;  font-size: 80px;">THE ELDEN WIKI</h1>
+
+    <div style="margin: 0px 30px; font-size: 20px; text-align: justify;">
+        <p>
+            Bienvenido a The Elden Wiki, un compendio de objetos creado de manera específica para el videojuego "Elden Ring", pensado para ayudarte
+            en la búsqueda de tu equipo favorito, indagar en la historia y el lore del nuevo mundo ficticio de George R.R. Martin, o encontrar ese objeto que
+            necesitas desesperadamente para acabar con un boss. Tendrás acceso a todos los datos importantes sobre el equipo para ver qué es lo que más se puede
+            adaptar a tu build. ¡Buena caza, Sinluz! Te esperamos en el Trono del Señor del Círculo.
+        </p>
+        <br />
+        <p>
+            Elden Ring es un juego de rol de acción desarrollado por FromSoftware y publicado por Bandai Namco Entertainment. 
+            El juego fue dirigido por Hidetaka Miyazaki y realizado en colaboración con el novelista de fantasía George R. R. Martin, 
+            quien proporcionó material para la ambientación del juego. Fue lanzado para PC, PlayStation 4, PlayStation 5, 
+            Xbox One y Xbox Series X/S el 25 de febrero de 2022. Elden Ring se presenta a través de una perspectiva en tercera persona, 
+            donde los jugadores recorren libremente su mundo abierto interactivo. Los elementos del juego incluyen combate con varios tipos de armas y
+            hechizos mágicos, podrás montar a caballo, invocar a tus amigos en combate y crear tus propios consumibles mediante la recolección de ingredientes silvestres.
+        </p>
+    </div>
+
+    <div style="display: flex; flex-flow: row; align-items: center; justify-content: space-around; width: 90%; max-width: 600px; margin: 100px 30px;">
+        <h4><a asp-area="" asp-controller="Armas" asp-action="Index">Armas</a></h4>
+        <div style="width: 2px; height: 35px; background: radial-gradient(closest-corner, rgba(250, 235, 215, 0.6) 50%, rgba(250, 235, 215, 0.0)); box-shadow: 0 0 5px antiquewhite;"></div>
+        <h4><a asp-area="" asp-controller="Armaduras" asp-action="Index">Armaduras</a></h4>
+        <div style="width: 2px; height: 35px; background: radial-gradient(closest-corner, rgba(250, 235, 215, 0.6) 50%, rgba(250, 235, 215, 0.0)); box-shadow: 0 0 5px antiquewhite; "></div>
+        <h4><a asp-area="" asp-controller="Consumibles" asp-action="Index">Consumibles</a></h4>
+
+    </div>
+</div>
+    

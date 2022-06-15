@@ -1,0 +1,55 @@
+﻿@model ProyectoFinal_JuegoWiki.Models.ArmaViewModel
+
+@{
+    ViewData["Title"] = "Armas";
+}
+
+<div class="contenidoprincipal">
+
+    <div style="width: 90%">
+        <h1 style="margin-top:20px; font-size: 60px;">ARMAS</h1>
+
+        <hr class="barraSeparadora" />
+
+       @if (User.IsInRole("Administrador"))
+        {
+            <p style="align-self:flex-start; margin-left: 20px;">
+                <a asp-action="Create">Crear nueva arma</a>
+            </p>
+        }
+
+    </div>
+
+    <div class="contenedorLista" style="display: flex; flex-flow: wrap; align-items: center; justify-content: center;">
+        @foreach (var tipo in Model.TipoArma.OrderBy(i => i.Value))
+        {
+            <h1 style="margin-top:40px; font-size: 40px; width:100%; text-align: center;"> @Html.DisplayFor(modelItem => tipo.Text)</h1>
+            <hr class="barraSeparadora" style="border-radius: 100%; margin: 0px 5% 30px 5%;"/>
+
+            @foreach (var item in Model.Arma.OrderBy(i => i.Nombre).Where(i => i.TipoArma.Nombre == tipo.Text))
+            {
+                <div class="contenedorItem" style="display: flex; flex-flow: column; align-items: center; justify-content: center; margin: 30px 0px;">
+                    <a class="itemLink" asp-action="Details" asp-route-id="@item.ArmaID" style="display: flex; flex-flow: column; align-items: center; justify-content: center; text-decoration: none; color: antiquewhite;">
+
+                        <img src="~/img/Armas/@item.TipoArma.Nombre/@item.Imagen" style="width:300px; height: 300px; margin: 0px 20px;" />
+                        <br />
+                        <p>
+                            @Html.DisplayFor(modelItem => item.Nombre)
+                        </p>
+
+                    </a>
+
+                    <p>
+                        @Html.DisplayNameFor(modelItem => item.Ceniza): <a class="itemLink" asp-action="Details" asp-controller="Cenizas" asp-route-id="@item.CenizaID" style="text-decoration: none; color: antiquewhite;"> @Html.DisplayFor(modelItem => item.Ceniza.Nombre)</a>
+                    </p>
+                    @if (User.IsInRole("Administrador"))
+                    {
+                        <a class="itemLink" asp-action="Delete" asp-route-id="@item.ArmaID" style="text-decoration: none; color: antiquewhite;">Borrar</a>
+                    }
+                </div>
+            }
+        }
+
+    </div>
+
+</div>

@@ -1,0 +1,31 @@
+﻿@model ProyectoFinal_JuegoWiki.Models.TipoArma
+
+@{
+    ViewData["Title"] = "Borrar";
+}
+
+<div class="contenidoprincipal">
+    <div style="width: 90%">
+        <h1 style="margin-top:20px; font-size: 60px; margin-right: 20px;">BORRANDO TIPO DE ARMA</h1>
+
+        <h3 style="color: red;">Confirma para borrar el siguiente item:</h3>
+        <h5 style="color: red;">Ten en cuenta que todas las armas asociadas a este tipo de arma también se borrarán para evitar conflictos.</h5>
+
+        <hr class="barraSeparadora" />
+    </div>
+
+    <div class="informacionTotal" style="display:flex; justify-content: space-between; width: 100%; padding: 0px 10%; padding-bottom: 30px;">
+        <div style="font-size: 20px; width: 60%; display: flex; flex-flow:column; justify-content: space-between; align-items: center;">
+            <div>
+                <h2>Grupo de armas de tipo: @Html.DisplayFor(model => model.Nombre)</h2>
+            </div>
+
+
+        </div>
+    </div>
+    <form asp-action="Delete" style="margin-bottom: 30px;">
+        <input type="hidden" asp-for="TipoArmaID" />
+        <input type="submit" value="Borrar" class="boton-borrar" /> |
+        <a asp-action="Index">Cancelar</a>
+    </form>
+</div>

@@ -1,0 +1,152 @@
+﻿@model ProyectoFinal_JuegoWiki.Models.Arma
+
+@{
+    ViewData["Title"] = "Editando";
+}
+
+<div class="contenidoprincipal">
+    <div style="width: 90%">
+        <h1 style="margin-top:20px; font-size: 60px; margin-right: 20px;">EDITANDO: @Html.DisplayFor(model => model.Nombre)</h1>
+
+        <hr class="barraSeparadora" />
+    </div>
+
+    <div class="row">
+        <form asp-action="Edit">
+            <div style="display: flex; flex-flow: wrap; align-items: center; justify-content: center;">
+                <div style="width: 40%; margin: 0px 15px;">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="ArmaID" />
+                    <div class="form-group">
+                        <label asp-for="Nombre" class="control-label"></label>*
+                        <input asp-for="Nombre" class="loginregister-input form-control" />
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Descripcion" class="control-label"></label>*
+                        <textarea asp-for="Descripcion" class="loginregister-input form-control" style="max-height: 500px; min-height: 60px; transition: none;"></textarea>
+                        <span asp-validation-for="Descripcion" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        @*Por motivos de seguridad HTML5 previene la precarga de archivos en este tipo de campos, se deben de volver a añadir la imagen al editar el objeto*@
+                        <label asp-for="Imagen" class="control-label"></label>*
+                        <input type="file" asp-for="Imagen" class="loginregister-input form-control" required title="Se requiere una imagen"/>
+                        <span asp-validation-for="Imagen" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TipoArma" class="control-label"></label>*
+                        <select asp-for="TipoArmaID" class="loginregister-input form-control" asp-items="ViewBag.TipoArmaID"></select>
+                        <span asp-validation-for="TipoArmaID" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Ceniza" class="control-label"></label>*
+                        <select asp-for="CenizaID" class="loginregister-input form-control" asp-items="ViewBag.CenizaID"></select>
+                        <span asp-validation-for="CenizaID" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="DmgFisico" class="control-label"></label>
+                        <input asp-for="DmgFisico" class="loginregister-input form-control" />
+                        <span asp-validation-for="DmgFisico" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="DmgMagico" class="control-label"></label>
+                        <input asp-for="DmgMagico" class="loginregister-input form-control" />
+                        <span asp-validation-for="DmgMagico" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="DmgFuego" class="control-label"></label>
+                        <input asp-for="DmgFuego" class="loginregister-input form-control" />
+                        <span asp-validation-for="DmgFuego" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="DmgRayo" class="control-label"></label>
+                        <input asp-for="DmgRayo" class="loginregister-input form-control" />
+                        <span asp-validation-for="DmgRayo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="DmgSagrado" class="control-label"></label>
+                        <input asp-for="DmgSagrado" class="loginregister-input form-control" />
+                        <span asp-validation-for="DmgSagrado" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="DmgCritico" class="control-label"></label>
+                        <input asp-for="DmgCritico" class="loginregister-input form-control" />
+                        <span asp-validation-for="DmgCritico" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div style="width: 40%; margin: 0px 15px;">
+                    <div class="form-group">
+                        <label asp-for="RequerimientoStr" class="control-label"></label>
+                        <input asp-for="RequerimientoStr" class="loginregister-input form-control" />
+                        <span asp-validation-for="RequerimientoStr" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="EscaladoStr" class="control-label"></label>
+                        <input asp-for="EscaladoStr" class="loginregister-input form-control" />
+                        <span asp-validation-for="EscaladoStr" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="RequerimientoDex" class="control-label"></label>
+                        <input asp-for="RequerimientoDex" class="loginregister-input form-control" />
+                        <span asp-validation-for="RequerimientoDex" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="EscaladoDex" class="control-label"></label>
+                        <input asp-for="EscaladoDex" class="loginregister-input form-control" />
+                        <span asp-validation-for="EscaladoDex" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="RequerimientoInt" class="control-label"></label>
+                        <input asp-for="RequerimientoInt" class="loginregister-input form-control" />
+                        <span asp-validation-for="RequerimientoInt" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="EscaladoInt" class="control-label"></label>
+                        <input asp-for="EscaladoInt" class="loginregister-input form-control" />
+                        <span asp-validation-for="EscaladoInt" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="RequerimientoFe" class="control-label"></label>
+                        <input asp-for="RequerimientoFe" class="loginregister-input form-control" />
+                        <span asp-validation-for="RequerimientoFe" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="EscaladoFe" class="control-label"></label>
+                        <input asp-for="EscaladoFe" class="loginregister-input form-control" />
+                        <span asp-validation-for="EscaladoFe" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="RequerimientoArcana" class="control-label"></label>
+                        <input asp-for="RequerimientoArcana" class="loginregister-input form-control" />
+                        <span asp-validation-for="RequerimientoArcana" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="EscaladoArcana" class="control-label"></label>
+                        <input asp-for="EscaladoArcana" class="loginregister-input form-control" />
+                        <span asp-validation-for="EscaladoArcana" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Peso" class="control-label"></label>*
+                        <input asp-for="Peso" class="loginregister-input form-control" />
+                        <span asp-validation-for="Peso" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group" style="margin-top: 40px; display: flex; align-items: center; justify-content: center;">
+                <input type="submit" value="Guardar cambios" class="loginregister-btn" />
+            </div>
+        </form>
+    </div>
+
+    <div style="margin-top: 50px; margin-bottom: 20px;">
+        <a asp-action="Index">Volver a la lista</a>
+    </div>
+
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

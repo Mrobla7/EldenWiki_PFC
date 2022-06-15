@@ -1,0 +1,44 @@
+﻿@model IEnumerable<ProyectoFinal_JuegoWiki.Models.Armadura>
+
+@{
+    ViewData["Title"] = "Armaduras";
+}
+
+<div class="contenidoprincipal">
+
+    <div style="width: 90%">
+        <h1 style="margin-top:20px; font-size: 60px;">ARMADURAS</h1>
+
+        <hr class="barraSeparadora" />
+       @if (User.IsInRole("Administrador"))
+        {
+            <p style="align-self:flex-start; margin-left: 20px;">
+                <a asp-action="Create">Crear nuevo set de armadura</a>
+            </p>
+        }
+
+    </div>
+
+    <div class="contenedorLista" style="display: flex; flex-flow: wrap; align-items: center; justify-content: center;">
+       @foreach (var item in Model.OrderBy(i=> i.Nombre))
+        {
+        <div class="contenedorItem" style="display: flex; flex-flow: column; align-items: center; justify-content: center; margin: 30px 0px;">
+
+            <a asp-action="Details" asp-route-id="@item.ArmaduraID" style="display: flex; flex-flow: column; align-items: center; justify-content: center; text-decoration:none; color:antiquewhite;">
+
+                <img src="~/img/Armaduras/@item.Imagen" style="width:300px; height: 560px; margin: 0px 20px;" />
+                <br />
+                <p>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </p>
+
+            </a>
+           @if (User.IsInRole("Administrador"))
+            {
+                <a asp-action="Delete" asp-route-id="@item.ArmaduraID" style="text-decoration: none; color: antiquewhite;">Borrar</a>
+            }
+        </div>
+        }
+    </div>
+
+</div>

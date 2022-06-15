@@ -1,0 +1,78 @@
+﻿@model ProyectoFinal_JuegoWiki.Models.Armadura
+
+@{
+    ViewData["Title"] = "Borrar";
+}
+
+<div class="contenidoprincipal">
+    <div style="width: 90%">
+        <h1 style="margin-top:20px; font-size: 60px; margin-right: 20px;">BORRANDO ARMADURA</h1>
+
+        <h3 style="color: red;">Confirma para borrar el siguiente item:</h3>
+
+        <hr class="barraSeparadora" />
+    </div>
+
+    <div class="informacionTotal" style="display:flex; justify-content: space-between; width: 100%; padding: 0px 10%; padding-bottom: 30px;">
+        <div style="font-size: 20px; width: 60%; display: flex; flex-flow:column; justify-content: space-between; align-items: center;">
+            <div>
+                <h2>@Html.DisplayFor(model => model.Nombre)</h2>
+                <p>@Html.DisplayFor(model => model.Descripcion)</p>
+            </div>
+
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="ArmaduraID" />
+                <input type="submit" value="Borrar" class="boton-borrar" /> |
+                <a asp-action="Index">Cancelar</a>
+            </form>
+        </div>
+
+        <div class="tarjeta" style="display: flex; flex-flow: wrap; align-items: center; justify-content: center; width: 40%;">
+
+            <div class="tarjeta-imagen" style="display:flex; flex-flow:column; align-items:center; justify-content:center;">
+                <h1>Armadura</h1>
+                <img src="@("~/img/Armaduras/"+Model.Imagen)" asp-append-version="true" style="background: radial-gradient(closest-side, rgba(250, 235, 215, 0.6) 30%, rgba(250, 235, 215, 0.0));"/>
+                <h4>@Html.DisplayNameFor(model => model.Peso) : @Html.DisplayFor(model => model.Peso)</h4>
+
+                <div class="propiedadesObjeto" style="display:flex; flex-flow:wrap; align-items:center;">
+
+                    <div class="caracteristicas" style="padding: 10px;">
+
+                        @Html.DisplayNameFor(model => model.Vitalidad) :
+                        @Html.DisplayFor(model => model.Vitalidad)
+
+                        <br />
+
+                        @Html.DisplayNameFor(model => model.ResFisica) :
+                        @Html.DisplayFor(model => model.ResFisica)
+
+                        <br />
+
+                        @Html.DisplayNameFor(model => model.ResMagica) :
+                        @Html.DisplayFor(model => model.ResMagica)
+
+                        <br />
+
+                        @Html.DisplayNameFor(model => model.ResFuego) :
+                        @Html.DisplayFor(model => model.ResFuego)
+
+                        <br />
+
+                        @Html.DisplayNameFor(model => model.ResRayo) :
+                        @Html.DisplayFor(model => model.ResRayo)
+
+                        <br />
+
+                        @Html.DisplayNameFor(model => model.ResSagrado) :
+                        @Html.DisplayFor(model => model.ResSagrado)
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+</div>

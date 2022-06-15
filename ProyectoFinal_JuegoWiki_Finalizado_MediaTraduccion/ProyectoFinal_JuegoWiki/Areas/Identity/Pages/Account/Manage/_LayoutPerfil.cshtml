@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Elden Wiki</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="colormenus navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="@("~/img/EldenRing_Icono.png")" asp-append-version="true" style="width: 50px; height: 50px;" />
+                </a>
+                <button class=" colorhamburguesa navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="coloropcion nav-link text-dark" asp-area="" asp-controller="Armas" asp-action="Index">Armas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="coloropcion nav-link text-dark" asp-area="" asp-controller="Armaduras" asp-action="Index">Armaduras</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="coloropcion nav-link text-dark" asp-area="" asp-controller="Consumibles" asp-action="Index">Consumibles</a>
+                        </li>
+                        @if (User.IsInRole("Administrador"))
+                        {
+                            <li class="nav-item">
+                                <a class="coloropcion nav-link text-dark" asp-area="" asp-controller="Cenizas" asp-action="Index">Cenizas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="coloropcion nav-link text-dark" asp-area="" asp-controller="TipoArmas" asp-action="Index">Tipos de Armas</a>
+                            </li>
+                        }
+
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="contenedor">
+        <div class="banner"><p>Esto es un anuncio</p></div>
+        <main role="main">
+            <div class="contenidoprincipal">
+                <partial name="_ManageNav" />
+
+                <div style="align-self: center; padding-top: 70px;">
+                    @RenderBody()
+                </div>
+
+            </div>
+        </main>
+        <div class="banner"><p>Esto es un anuncio</p></div>
+    </div>
+
+    <footer class="colorfooter border-top footer text-muted">
+        <div class="container" style="color: antiquewhite !important;">
+            &copy; 2022 - Elden wiki
+        </div>
+    </footer>
+
+    <script type="text/javascript">
+        document.getElementsByTagName("h4")[0].style.display = "none";
+        document.getElementsByClassName("col-md-6")[0].style.display = "none";
+        var titulo = document.createElement('h2');
+        var contenido = document.createTextNode('Hola @User.Identity.Name');
+        titulo.appendChild(contenido);
+        document.getElementsByClassName("contenidoprincipal")[0].appendChild(titulo);
+    </script>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

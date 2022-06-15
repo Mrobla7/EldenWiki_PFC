@@ -1,0 +1,44 @@
+﻿@model IEnumerable<ProyectoFinal_JuegoWiki.Models.TipoArma>
+
+@{
+    ViewData["Title"] = "Tipos de armas";
+}
+
+<div class="contenidoprincipal">
+
+    <div style="width: 90%">
+        <h1 style="margin-top:20px; font-size: 60px;">TIPOS DE ARMAS</h1>
+
+        <hr class="barraSeparadora" />
+
+        <p style="align-self:flex-start; margin-left: 20px;">
+            <a asp-action="Create">Crear un nuevo tipo</a>
+        </p>
+    </div>
+
+    <table class="colortabla table">
+        <thead style="color: antiquewhite;">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody style="color: antiquewhite;">
+            @foreach (var item in Model.OrderBy(i => i.Nombre))
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td style="text-align: right;">
+                        <a asp-action="Edit" asp-route-id="@item.TipoArmaID">Editar</a> |
+                        <a asp-action="Delete" asp-route-id="@item.TipoArmaID">Borrar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

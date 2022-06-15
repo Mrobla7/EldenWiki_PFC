@@ -1,0 +1,37 @@
+﻿@page
+@model RegisterConfirmationModel
+@{
+    ViewData["Title"] = "Cofirmar correo";
+}
+
+<div class="contenidoprincipal">
+    <div style="width: 90%">
+        <h1 style="margin-top:20px; font-size: 60px; margin-right: 20px;">VALIDACIÓN DE LA CUENTA</h1>
+
+        <hr class="barraSeparadora" />
+    </div>
+
+    <div class="row">
+        <div>
+            @{
+                if (@Model.DisplayConfirmAccountLink)
+                {
+                    <p style="padding: 50px;">
+                        Esta wiki aún no tiene un sistema de confirmación de correo electrónico.
+                        Para simular la confirmación, por favor, <a id="confirm-link" href="@Model.EmailConfirmationUrl">Clica aquí</a>.
+                    </p>
+                }
+                else
+                {
+                    <p>
+                        Comprueba tu bandeja de entrada para confirmar el registro de tu cuenta.
+                        <br />
+                        <br />
+                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Reenviar e-mail de confirmación</a>
+                    </p>
+                }
+            }
+        </div>
+    </div>
+</div>
+

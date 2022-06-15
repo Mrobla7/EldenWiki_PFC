@@ -1,0 +1,237 @@
+﻿@model ProyectoFinal_JuegoWiki.Models.Arma
+
+@{
+    ViewData["Title"] = @Html.DisplayFor(model => model.Nombre);
+
+    var rutaCeniza = Model.CenizaID;
+}
+
+<div class="contenidoprincipal">
+    <div style="width: 90%">
+        <h1 style="margin-top:20px; font-size: 60px; margin-right: 20px;">@Html.DisplayFor(model => model.Nombre)</h1>
+
+        <hr class="barraSeparadora" />
+    </div>
+
+    <div class="informacionTotal">
+        <div style="font-size: 20px; width: 60%;">
+            <p>@Html.DisplayFor(model => model.Descripcion)</p>
+            <a asp-action="Index">Volver a la lista</a>
+        </div>
+
+        <div class="tarjeta" style="display: flex; flex-flow: wrap; align-items: center; justify-content: center; width: 40%; margin-left: 20px;">
+
+            <div class="tarjeta-imagen" style="display:flex; flex-flow:column; align-items:center; justify-content:center;">
+                <h1>@Html.DisplayFor(model => model.TipoArma.Nombre)</h1>
+
+               @if (User.IsInRole("Administrador") || User.IsInRole("Usuario"))
+                {
+                    <a asp-action="Edit" asp-route-id="@Model.ArmaID">Editar</a>
+                }
+
+                <img src="@("~/img/Armas/"+Model.TipoArma.Nombre+"/"+Model.Imagen)" asp-append-version="true"/>
+                <h3>@Html.DisplayNameFor(model => model.Ceniza) : <a asp-action="Details" asp-controller="Cenizas" asp-route-id="@rutaCeniza" style="text-decoration: none; color: antiquewhite;"> @Html.DisplayFor(model => model.Ceniza.Nombre)</a></h3>
+                <h4>@Html.DisplayNameFor(model => model.Peso) : @Html.DisplayFor(model => model.Peso)</h4>
+
+                <div class="propiedadesObjeto" style="display:flex; flex-flow:wrap; align-items:center; justify-content: center; padding: 0px 20px;">
+                    <div class="requerimientos" style="padding: 10px;">
+                        @Html.DisplayNameFor(model => model.RequerimientoStr) :
+                        @if (Model.RequerimientoStr == null)
+                        {
+                            <span>-</span>
+                        }
+                        else
+                        {
+                            <span>@Html.DisplayFor(model => model.RequerimientoStr)</span>
+                        }
+
+                        <br />
+
+                        @Html.DisplayNameFor(model => model.EscaladoStr) :
+                        @if (Model.EscaladoStr == null)
+                        {
+                            <span>-</span>
+                        }
+                        else
+                        {
+                            <span>@Html.DisplayFor(model => model.EscaladoStr)</span>
+                        }
+
+                        <br />
+
+                        @Html.DisplayNameFor(model => model.RequerimientoDex) :
+                        @if (Model.RequerimientoDex == null)
+                        {
+                            <span>-</span>
+                        }
+                        else
+                        {
+                            <span>@Html.DisplayFor(model => model.RequerimientoDex)</span>
+                        }
+
+                        <br />
+
+                        @Html.DisplayNameFor(model => model.EscaladoDex) :
+                        @if (Model.EscaladoDex == null)
+                        {
+                            <span>-</span>
+                        }
+                        else
+                        {
+                            <span>@Html.DisplayFor(model => model.EscaladoDex)</span>
+                        }
+
+                        <br />
+
+                        @Html.DisplayNameFor(model => model.RequerimientoInt) :
+                        @if (Model.RequerimientoInt == null)
+                        {
+                            <span>-</span>
+                        }
+                        else
+                        {
+                            <span>@Html.DisplayFor(model => model.RequerimientoInt)</span>
+                        }
+
+                        <br />
+
+                        @Html.DisplayNameFor(model => model.EscaladoInt) :
+                        @if (Model.EscaladoInt == null)
+                        {
+                            <span>-</span>
+                        }
+                        else
+                        {
+                            <span>@Html.DisplayFor(model => model.EscaladoInt)</span>
+                        }
+
+                        <br />
+
+                        @Html.DisplayNameFor(model => model.RequerimientoFe) :
+                        @if (Model.RequerimientoFe == null)
+                        {
+                            <span>-</span>
+                        }
+                        else
+                        {
+                            <span>@Html.DisplayFor(model => model.RequerimientoFe)</span>
+                        }
+
+                        <br />
+
+                        @Html.DisplayNameFor(model => model.EscaladoFe) :
+                        @if (Model.EscaladoFe == null)
+                        {
+                            <span>-</span>
+                        }
+                        else
+                        {
+                            <span>@Html.DisplayFor(model => model.EscaladoFe)</span>
+                        }
+
+                        <br />
+
+                        @Html.DisplayNameFor(model => model.RequerimientoArcana) :
+                        @if (Model.RequerimientoArcana == null)
+                        {
+                            <span>-</span>
+                        }
+                        else
+                        {
+                            <span>@Html.DisplayFor(model => model.RequerimientoArcana)</span>
+                        }
+
+                        <br />
+
+                        @Html.DisplayNameFor(model => model.EscaladoArcana) :
+                        @if (Model.EscaladoArcana == null)
+                        {
+                            <span>-</span>
+                        }
+                        else
+                        {
+                            <span>@Html.DisplayFor(model => model.EscaladoArcana)</span>
+                        }
+                    </div>
+
+                    <div class="danios" style="padding: 10px;">
+
+                        @Html.DisplayNameFor(model => model.DmgFisico) :
+                        @if (Model.DmgFisico == null)
+                        {
+                            <span>-</span>
+                        }
+                        else
+                        {
+                            <span>@Html.DisplayFor(model => model.DmgFisico)</span>
+                        }
+
+                        <br />
+
+                        @Html.DisplayNameFor(model => model.DmgMagico) :
+                        @if (Model.DmgMagico == null)
+                        {
+                            <span>-</span>
+                        }
+                        else
+                        {
+                            <span>@Html.DisplayFor(model => model.DmgMagico)</span>
+                        }
+
+                        <br />
+
+                        @Html.DisplayNameFor(model => model.DmgFuego) :
+                        @if (Model.DmgFuego == null)
+                        {
+                            <span>-</span>
+                        }
+                        else
+                        {
+                            <span>@Html.DisplayFor(model => model.DmgFuego)</span>
+                        }
+
+                        <br />
+
+                        @Html.DisplayNameFor(model => model.DmgRayo) :
+                        @if (Model.DmgRayo == null)
+                        {
+                            <span>-</span>
+                        }
+                        else
+                        {
+                            <span>@Html.DisplayFor(model => model.DmgRayo)</span>
+                        }
+
+                        <br />
+
+                        @Html.DisplayNameFor(model => model.DmgSagrado) :
+                        @if (Model.DmgSagrado == null)
+                        {
+                            <span>-</span>
+                        }
+                        else
+                        {
+                            <span>@Html.DisplayFor(model => model.DmgSagrado)</span>
+                        }
+
+                        <br />
+
+                        @Html.DisplayNameFor(model => model.DmgCritico) :
+                        @if (Model.DmgCritico == null)
+                        {
+                            <span>-</span>
+                        }
+                        else
+                        {
+                            <span>@Html.DisplayFor(model => model.DmgCritico)</span>
+                        }
+                    </div>
+                </div>
+
+            </div>
+            
+            
+        </div>
+    </div>
+
+</div>

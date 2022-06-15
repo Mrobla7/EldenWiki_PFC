@@ -1,0 +1,2 @@
+# EldenWiki_PFC
+ Final project for my Advance Vocational Training degree. Simply put, a videogame wiki with emphasis in CRUD systems and user and role management using .NET. Using Visual Studio is advised as it is easier to publish the information from the .dacpac file to the DQL express database. Further information can be found in the documentation PDF file, keep in mind this documentation, as well as the proyect content is mostly in Spanish.

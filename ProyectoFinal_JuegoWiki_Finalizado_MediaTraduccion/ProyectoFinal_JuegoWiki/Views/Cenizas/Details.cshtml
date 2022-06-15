@@ -1,0 +1,28 @@
+﻿@model ProyectoFinal_JuegoWiki.Models.Ceniza
+
+@{
+    ViewData["Title"] = @Html.DisplayNameFor(model => model.Nombre);
+}
+
+<div class="contenidoprincipal">
+    <div style="width: 90%">
+        <h1 style="margin-top:20px; font-size: 60px; margin-right: 20px;">@Html.DisplayFor(model => model.Nombre)</h1>
+
+        <hr class="barraSeparadora" />
+    </div>
+
+    <div class="informacionTotal">
+        <div style="font-size: 20px;">
+            <h2>
+                @Html.DisplayNameFor(model => model.CosteMana) : @Html.DisplayFor(model => model.CosteMana)
+            </h2>
+            <p>@Html.DisplayFor(model => model.Descripcion)</p>
+            @if (User.IsInRole("Administrador"))
+            {
+                <a asp-action="Index">Volver a la lista de cenizas</a>
+            }
+            <a asp-controller="Armas" asp-action="Index">Volver a la lista</a>
+        </div>
+        
+    </div>
+</div>

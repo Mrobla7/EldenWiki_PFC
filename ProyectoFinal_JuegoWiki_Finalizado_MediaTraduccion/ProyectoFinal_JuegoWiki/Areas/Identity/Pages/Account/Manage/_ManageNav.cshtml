@@ -1,0 +1,12 @@
+﻿@inject SignInManager<IdentityUser> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+
+<div class="row" style="margin-top: 30px; margin-bottom: 20px;">
+    <a class="loginregister-btn @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">Cambiar contraseña</a>
+    <a class="text-danger @ManageNavPages.DeletePersonalDataNavClass(ViewContext)" style="align-self: center; margin-left: 20px;" id="personal-data" asp-page="./DeletePersonalData">Borrar Cuenta</a>
+</div>
+
+
+

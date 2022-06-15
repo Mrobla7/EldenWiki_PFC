@@ -1,0 +1,56 @@
+﻿@model IEnumerable<ProyectoFinal_JuegoWiki.Models.Ceniza>
+
+@{
+    ViewData["Title"] = "Cenizas";
+}
+
+<div class="contenidoprincipal">
+
+    <div style="width: 90%">
+        <h1 style="margin-top:20px; font-size: 60px; margin-right: 20px;">CENIZAS</h1>
+
+        <hr class="barraSeparadora" />
+
+        <p style="align-self:flex-start; margin-left: 20px;">
+            <a asp-action="Create">Crear nueva ceniza</a>
+        </p>
+    </div>
+
+    <table class="colortabla table">
+        <thead style="color: antiquewhite;">
+            <tr style="text-align: center;">
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th style="width: 50%;">
+                    @Html.DisplayNameFor(model => model.Descripcion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CosteMana)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody style="color: antiquewhite;">
+            @foreach (var item in Model.OrderBy(i => i.Nombre))
+            {
+                <tr style="text-align: center;">
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.CenizaID">@Html.DisplayFor(modelItem => item.Nombre)</a>
+                    </td>
+                    <td style="text-align: left;">
+                        @Html.DisplayFor(modelItem => item.Descripcion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CosteMana)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.CenizaID">Editar</a> | 
+                        <a asp-action="Delete" asp-route-id="@item.CenizaID">Borrar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
