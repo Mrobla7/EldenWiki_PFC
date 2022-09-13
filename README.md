@@ -6,5 +6,5 @@
  <li>Functional CRUD system, connected via own API to an SQLExpress database</li>
  <li>User account management and user role integration</li>
  <li>Secure management of sensible information using hash code encryption</li>
- <li>Object dependencies and rescticted access to certain objects information based on user role</li>
+ <li>Object dependencies and restricted access to certain objects information based on user role</li>
 </ul>
